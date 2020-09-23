@@ -1,7 +1,7 @@
 package email_application;
 
 import java.util.Scanner;
-
+import java.util.Random;
 /**
  *
  * @author yahia
@@ -57,13 +57,16 @@ public class Email {
     }
     //Generate a random password for the email
     private String randomPassword(int length){
-        String passwordSet = "ABCDEFGHIJKLMNOPQRST0123456789!@#%";
+        String characters = "abcdefgHiJkLmNoPqrsTvwXyZ0123456789!@#%";
+        int charactersLength = characters.length();
+        String randomPassword = "";
+        Random random = new Random();
         char[] password = new char[length];
         for(int i = 0; i < length; i++ ){
-            int rand = (int) (Math.random() * passwordSet.length());
-            password[i] = passwordSet.charAt(rand);
+            password[i] = characters.charAt(random.nextInt(charactersLength));
+            randomPassword += password[i];
         }
-        return new String(password);
+        return randomPassword;
     }
     
     //Set the mail box capacity
